@@ -65,6 +65,8 @@ userSchame.methods.comparePassword = function(plainPassword, cb) {
   });
 };
 
+
+// 10/23(토) : 로그인 기능
 userSchame.methods.generateToken = function(cb) {
   var user = this;
 
@@ -78,6 +80,24 @@ userSchame.methods.generateToken = function(cb) {
     if(err) return cb(err);
     return cb(null, user);
   });
+};
+
+
+// 10/25(월) : Auth 기능
+userSchame.statics.findByToken = function(token, cb) {
+  var user = this;
+
+  // Token을 복호화한다.
+  jwt.verify(token, 'secretToken', function(err, decoded) {
+    // 사용자 ID를 이용하여 사용자를 찾은 다음에
+    // 클라이언트에서 가져온 Token과 DB에 보관된 Token이 일치하는지 확인
+
+    user.findOne({"_id": decoded, "token": token }, function(err, user) {
+      if(err) return cb(err);
+      cb(null, user);
+    });
+  });
+  
 };
 
 const User = mongoose.model('User', userSchame);      // model('모델명', 사용할 스키마)
