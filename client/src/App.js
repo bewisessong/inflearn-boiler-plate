@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
+import LandingPage from './components/views/LandingPage/LandingPage';
+import LoginPage from './components/views/LoginPage/LoginPage';
+import RegisterPage from './components/views/RegisterPage/RegisterPage';
+
+
+// 10/27(수) : React Router Dom
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React 2021.10.26
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        {/* 1. 한 줄에
+              <Route exact path="/" component= { LandingPage } />
+              2. 여러 줄에
+              <Route path="/">
+                <LandingPage />
+              </Route>
+           */}
+        <Switch>
+          <Route exact path="/" component={ LandingPage } />
+          <Route exact path="/login" component={ LoginPage } />
+          <Route exact path="/register" component={ RegisterPage } />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

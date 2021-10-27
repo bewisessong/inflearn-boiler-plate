@@ -19,6 +19,12 @@ mongoose.connect(config.mongoURI).then(()=>console.log('MongoDB Connected..'))
 .catch(err => console.log(err));
 
 
+// 10/27(수) : Axios 테스트
+app.get('/api/hello', (req, res) => {
+  res.send("Axios 제대로 전송되었나?")
+});
+
+
 app.get('/', (req, res) => {
   res.send('Hello World! 핫리로드!') // 루트 디렉토리에서 Hello World 출력
 });
