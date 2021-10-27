@@ -5,8 +5,8 @@ function LandingPage() {
   
   // 10/27(수) : Axios 테스트 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/hello')
-    .then(response => console.log(response.data))
+    axios.get('/api/hello')
+    .then(response => console.log(response))
   }, [])
 
   return (
