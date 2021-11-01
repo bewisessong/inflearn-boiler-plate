@@ -20,9 +20,9 @@ mongoose.connect(config.mongoURI).then(()=>console.log('MongoDB Connected..'))
 
 
 // 10/27(수) : Axios 테스트
-app.get('/api/hello', (req, res) => {
-  res.send("Axios 제대로 전송되었나?")
-});
+// app.get('/api/hello', (req, res) => {
+//   res.send("Axios 제대로 전송되었나?")
+// });
 
 
 app.get('/', (req, res) => {
