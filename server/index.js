@@ -114,13 +114,12 @@ app.get('/api/users/auth', auth, (req, res)=> {
 
 // 10/25(월) : 로그아웃 기능
 app.get('/api/users/logout', auth, (req, res) => {
-  
   // 사용자를 로그아웃시킨다
   User.findOneAndUpdate({ _id: req.user._id },
     { token: "" },
     (err, user) => {
-      if(err) return res.json({ success: false, err });
-      return res.status(200).send({ success: true });
+      if(err) return res.json({ logoutSuccess: false, err });
+      return res.status(200).send({ logoutSuccess: true });
     });
 
 });
